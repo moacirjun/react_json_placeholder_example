@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'proptypes';
 
-import { fetchPostsOfUsersIfNeeded } from '../../store/actions';
+import { fetchPostsOfUsersIfNeeded } from '../../store/ducks/postsByUser';
 
 class Posts extends Component {
   componentDidMount() {

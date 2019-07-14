@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import propTypes from 'proptypes';
 import { Link } from 'react-router-dom';
 
-import { fetchUsersIfNeeded } from '../../store/actions';
+import { fetchUsersIfNeeded } from '../../store/ducks/users';
 
 class Users extends Component {
   componentDidMount() {
-    console.log('in componentDidMount');
     const { dispatch } = this.props;
-    console.log(fetchUsersIfNeeded());
     dispatch(fetchUsersIfNeeded());
   }
 
@@ -36,6 +34,7 @@ Users.propTypes = {
       email: propTypes.string,
     })).isRequired,
   }).isRequired,
+  dispatch: propTypes.func.isRequired,
 };
 
 const mapsStateToProps = state => ({
