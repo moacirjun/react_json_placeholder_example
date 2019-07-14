@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'proptypes';
+import { Link } from 'react-router-dom';
 
-const users = props => (
-  props.users.items.map(user => (
-    <div key={user.id}>
-      <h2>{user.name}</h2>
-      <h3>{user.email}</h3>
-      <a href="posts?userId=1">View Posts</a>
-    </div>
-  ))
-);
+import { fetchUsersIfNeeded } from '../../store/actions';
 
-users.propTypes = {
+class Users extends Component {
+  componentDidMount() {
+    console.log('in componentDidMount');
+    const { dispatch } = this.props;
+    console.log(fetchUsersIfNeeded());
+    dispatch(fetchUsersIfNeeded());
+  }
+
+  render() {
+    const { users } = this.props;
+
+    return users.items.map(user => (
+      <div key={user.id}>
+        <h2>{user.name}</h2>
+        <h3>{user.email}</h3>
+        <Link to={`users/${user.id}/posts`}>View Posts</Link>
+      </div>
+    ));
+  }
+}
+
+Users.propTypes = {
   users: propTypes.shape({
     isFetching: propTypes.bool.isRequired,
     error: propTypes.object,
@@ -21,11 +35,11 @@ users.propTypes = {
       name: propTypes.string,
       email: propTypes.string,
     })).isRequired,
-  }),
+  }).isRequired,
 };
 
 const mapsStateToProps = state => ({
   users: state.users,
 });
 
-export default connect(mapsStateToProps)(users);
+export default connect(mapsStateToProps)(Users);

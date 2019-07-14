@@ -5,7 +5,7 @@ const INITIAL_DATA = {
 };
 
 function posts(state = INITIAL_DATA, action) {
-  switch (action.types) {
+  switch (action.type) {
     case 'REQUEST_POSTS':
       return {
         ...state,
@@ -30,18 +30,8 @@ function posts(state = INITIAL_DATA, action) {
   }
 }
 
-export default function postsByUser(state = {
-  1: {
-    ...INITIAL_DATA,
-    items: [{
-      userId: 1,
-      id: 1,
-      title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit"',
-      body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto',
-    }],
-  },
-}, action) {
-  switch (action.types) {
+export default function postsByUser(state = {}, action) {
+  switch (action.type) {
     case 'REQUEST_POSTS':
     case 'REQUEST_POSTS_FAILURE':
     case 'REQUEST_POSTS_SUCCESS':

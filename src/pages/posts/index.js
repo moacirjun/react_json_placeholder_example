@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'proptypes';
 
+import { fetchPostsOfUsersIfNeeded } from '../../store/actions';
+
 class Posts extends Component {
   componentDidMount() {
-
+    const { dispatch, match: { params } } = this.props;
+    dispatch(fetchPostsOfUsersIfNeeded(params.userId));
   }
 
   render() {
@@ -40,8 +43,6 @@ const mapStateToProps = (state, ownProps) => {
     error: null,
     items: [],
   };
-
-  console.log(posts);
 
   return {
     isFetching,
