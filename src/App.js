@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import store from './store';
 
@@ -9,7 +10,6 @@ function App() {
   return (
     <Provider store={store}>
       <Routes />
-      <h1>moacir</h1>
     </Provider>
   );
 }

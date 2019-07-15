@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'proptypes';
-import { Link } from 'react-router-dom';
 
 import { fetchUsersIfNeeded } from '../../store/ducks/users';
+import UsersList from '../../components/UsersList';
 
 class Users extends Component {
   componentDidMount() {
@@ -13,14 +13,19 @@ class Users extends Component {
 
   render() {
     const { users } = this.props;
+    const { isFetching, error } = users;
 
-    return users.items.map(user => (
-      <div key={user.id}>
-        <h2>{user.name}</h2>
-        <h3>{user.email}</h3>
-        <Link to={`users/${user.id}/posts`}>View Posts</Link>
+    return (
+      <div className="container-fluid">
+        <h1>Users</h1>
+
+        {error && <div className="alert alert-danger">{error}</div>}
+
+        {isFetching && <h4>Loading</h4>}
+
+        {!isFetching && !error && <UsersList users={users.items} />}
       </div>
-    ));
+    );
   }
 }
 
