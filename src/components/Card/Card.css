@@ -1,0 +1,15 @@
+.card-widget {
+  margin: 1rem;
+  border: 1;
+  border-radius: 5px;
+  padding: .5rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+}
+
+.card-widget.hover-effect {
+  transition: box-shadow .150s ease-in-out;
+}
+
+.card-widget.hover-effect:hover {
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, .5);
+}

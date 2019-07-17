@@ -22,21 +22,21 @@ class Posts extends Component {
     } = this.props;
 
     return (
-      <div className="container-fluid">
-        <h1>Posts of User</h1>
+      <main className="wrapper">
+        <h1 className="text-center">Posts of User</h1>
 
-        <div className="d-flex justify-content-end mb-3">
-          <Link to="/" className="btn btn-primary">Back to Users Page</Link>
+        <div className="d-flex justify-content-end">
+          <Link to="/" className="button">Back to Users Page</Link>
         </div>
 
         {user && <UserDescription user={user} />}
 
         {isFetching && <h4>Loading</h4>}
 
-        {error && <div className="alert alert-danger">{error}</div>}
+        {error && <div className="error">{error}</div>}
 
         {!isFetching && !error && <PostsList posts={posts} />}
-      </div>
+      </main>
     );
   }
 }

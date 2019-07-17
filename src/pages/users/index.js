@@ -16,15 +16,15 @@ class Users extends Component {
     const { isFetching, error } = users;
 
     return (
-      <div className="container-fluid">
-        <h1>Users</h1>
+      <main className="wrapper">
+        <h1 className="text-center">Users</h1>
 
-        {error && <div className="alert alert-danger">{error}</div>}
+        {error && <div className="error">{error}</div>}
 
         {isFetching && <h4>Loading</h4>}
 
         {!isFetching && !error && <UsersList users={users.items} />}
-      </div>
+      </main>
     );
   }
 }

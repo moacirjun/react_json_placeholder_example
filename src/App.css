@@ -1,0 +1,53 @@
+/* General */
+* {
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  background: rgb(195,195,195);
+  background: linear-gradient(0deg, rgba(195,195,195,1) 0%, rgba(255,255,255,1) 9%);
+  min-height: 100vh;
+}
+
+.wrapper {
+  padding: 0 1rem;
+}
+
+/* Default button style */
+button, .button {
+  display: block;
+  padding: .7rem;
+  border-radius: 5px;
+  background-color: rgba(119, 23, 150, .8);
+  color: #FFF;
+  text-decoration: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+  transition: all .150s ease-in-out;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+button:hover, .button:hover {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, .5);
+  background-color: rgba(119, 23, 150, 1);
+}
+
+/* Utils */
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}

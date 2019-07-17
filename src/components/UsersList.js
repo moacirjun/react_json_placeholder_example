@@ -1,23 +1,24 @@
 import React from 'react';
 import propTypes from 'proptypes';
 import { Link } from 'react-router-dom';
+import './UserList.css';
+
+import Card from './Card/Card';
 
 const UserList = ({ users }) => (
-  <div className="row">
+  <div className="users-container">
     {users.map(user => (
-      <div className="col-12 col-sm-6 col-md-4 col-xl-3 mb-4" key={user.id}>
-        <div className="card">
-          <div className="card-body">
-            <div className="d-flex justify-content-center mb-3">
-              <img src="https://via.placeholder.com/75/771796" alt="avatar" className="rounded-circle" />
-            </div>
-            <h5 className="card-title text-center">{user.name}</h5>
-            <p className="card-text text-center">{user.email}</p>
-            <div className="d-flex justify-content-center">
-              <Link to={`users/${user.id}/posts`} className="btn btn-primary">View Posts</Link>
-            </div>
+      <div className="item" key={user.id}>
+        <Card>
+          <div className="card-image">
+            <img src="https://via.placeholder.com/75/771796" alt="avatar" className="rounded-circle" />
           </div>
-        </div>
+          <h4 className="text-center">{user.name}</h4>
+          <p className="text-center">{user.email}</p>
+          <div className="card-footer">
+            <Link to={`users/${user.id}/posts`} className="button">View Posts</Link>
+          </div>
+        </Card>
       </div>
     ))}
   </div>
