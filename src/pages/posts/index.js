@@ -4,12 +4,18 @@ import propTypes from 'proptypes';
 import { Link } from 'react-router-dom';
 
 import { fetchPostsOfUsersIfNeeded } from '../../store/ducks/postsByUser';
+import { fetchUsersIfNeeded } from '../../store/ducks/users';
 import PostsList from '../../components/PostsList';
 import UserDescription from '../../components/UserDescription';
 
 class Posts extends Component {
   componentDidMount() {
-    const { dispatch, userId } = this.props;
+    const { dispatch, user, userId } = this.props;
+
+    if (!user) {
+      dispatch(fetchUsersIfNeeded());
+    }
+
     dispatch(fetchPostsOfUsersIfNeeded(userId));
   }
 
